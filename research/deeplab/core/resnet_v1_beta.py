@@ -211,7 +211,7 @@ def resnet_v1_beta(inputs,
           net = root_block_fn(net)
           net = slim.max_pool2d(net, 3, stride=2, padding='SAME', scope='pool1')
           net = resnet_utils.stack_blocks_dense(net, blocks, output_stride,
-                                                store_non_strided_activations)
+                                                outputs_collections=store_non_strided_activations)
 
           if global_pool:
             # Global average pooling.
